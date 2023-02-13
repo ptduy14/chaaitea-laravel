@@ -1,0 +1,77 @@
+form{
+    width: 100%;
+}
+.cart-table {
+    width: 100%;
+    font-family: Arimo;
+    font-size: 13px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #23261d;
+    line-height: 1.91em;
+    margin: 0;
+}
+.product-remove {
+    width: 30px;
+}
+.product-thumnail {
+    width: 72px;
+    
+}
+table tr td{
+    border-bottom: 1px solid #e2e2e2;
+}   
+
+table tr td {
+    padding: 15px 0px 15px 15px;
+    
+}
+.product-thumnail > img {
+    width: 100%;
+    height: auto;
+}
+
+tbody > tr {
+    font-family: 'Arimo';
+    letter-spacing: none;
+}
+
+tbody > tr .product-subtotal{
+    color: #98a67c;
+    font-weight: 800;
+}
+
+.mt-0{
+    margin-top: 0;
+}
+.cart-info-header {
+    font-family: "Cormorant Garamond",sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    color: #23261d;
+    font-size: 52px;
+    line-height: 1.17em;
+    letter-spacing: .01em;
+    margin-bottom: 20px;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    margin: 80px 0 30px 0;
+}
+
+.cart-info-table {
+    width: 100%;
+}
+.cart-info-table > tbody > tr > th {
+    text-align: left;
+    width: 25%;
+    font-family: Arimo;
+    font-size: 12px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #23261d;
+    line-height: 1.91em;
+    margin: 0;
+    border-bottom: 1px solid #e2e2e2;
+}

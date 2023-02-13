@@ -1,0 +1,145 @@
+.container.content__main-container{
+    max-width: 90%;
+}
+
+.content__thumbnail{
+    width: 100%;
+    height: 640px;
+    position: relative;
+}
+.content__thumbnail img{
+    width: 100%;
+    height: 100%;
+}
+.content__thumbnail-text{
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    bottom: 0;
+    left: 0;
+    font-family: "EB Garamond";
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.content__thumbnail-text h3{
+    font-size: 40px;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+.content__thumbnail-text > p {
+    color: white;
+    font-size: 20px;
+    width: 60%;
+    text-align: center;
+}
+.content__main{
+    padding-top: 90px;
+    padding-bottom: 85px;
+    display: flex;
+}
+.content__main-r{
+    font-family: "Cormorant Garamond",sans-serif;
+}
+.content__main-l{
+    margin-left: 50px;
+}
+.cmr__heading{
+   
+    font-weight: 400;
+    text-transform: none;
+    color: #23261d;
+    font-size: 50px;
+    letter-spacing: 1px;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+.cmr__desc{
+    margin-top: 17px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    color: #4c4c4c;
+}
+
+.row{
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+    font-family: "EB Garamond";
+}
+.form-gruop__lbl{
+    font-size: 15px;
+    margin-left: 30px;
+}
+.input{
+    border: 1px solid #b6b9bf;
+    width: 100%;
+    display: block;
+    padding: 12px 17px 12px 17px;
+    background-color: #faf8f5;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+.form-gruop{
+    align-items: center;
+}
+#male,#female,#orther{
+    margin: 0 5px;
+}
+.submit-btn{
+    padding: 15px 30px;
+    border: none;
+    background-color: #98a67c;
+    color: white;
+    font-family: "Arimo";
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.submit-btn:hover{
+    opacity: 0.8;
+}
+.form-gruop > p{
+    margin-left: 20px;
+    font-size: 18px;
+}
+.form-gruop > p > a{
+    color: #98a67c;
+}
+
+input {
+    display: block;
+}
+
+
+.loader-btn {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #fff;
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0turn);
+    } 
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.input-select {
+    color: #757575;
+    position: relative;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}

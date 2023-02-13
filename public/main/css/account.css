@@ -1,0 +1,67 @@
+.btn-label {
+    margin-left: 30px;
+    position: relative;
+    font-family: 'Arimo';
+    padding: 10px 20px;
+}
+
+.img-user {
+    width: 200px;
+    height: 200px;
+}
+
+.img-user img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    
+}
+.al-center {
+    align-items: center;
+}
+
+#img-upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: contents;
+}
+
+.section-nav-account {
+    position: absolute;
+    display: flex;
+    list-style: none;
+    background-color: #98a67c;
+    bottom:0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    transition: 0.5s;
+}
+.section-nav-account li {
+    font-family: 'Arimo';
+    margin-right: 0;
+}
+.section-nav-account li:hover {
+    background-color: #b0c08f;
+}
+
+.section-nav-account li.active {
+    background-color:#fff;
+    color: #98a67c;
+}
+
+.form-layout-account {
+    width: 100%;
+    display: none;
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.section-nav-account .line-nav-account {
+    bottom: 0;
+    background-color: #fff;
+    height: 100%;
+    opacity: 0.2;
+}

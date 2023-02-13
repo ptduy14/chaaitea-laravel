@@ -1,0 +1,41 @@
+.form-layout-order {
+    width: 100%;
+}
+.order-table {
+    width: 100%;
+    font-family: Arimo;
+    font-size: 13px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #23261d;
+    line-height: 1.91em;
+    margin: 0;
+}
+
+tbody > tr .order-status,
+tbody > tr .order-money {
+    color: #98a67c;
+    font-weight: 800;
+}
+
+.order-cancel > button,
+.order-detail > button,
+.order-confirm > button{
+    padding: 12px 15px;
+    font-size: 12px;
+}
+
+.btn-cancel-order {
+    background-color: #d82253;
+}
+
+.form-gruop > label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.btn-intro.info {
+    background-color: rgb(0, 207, 210);
+}
