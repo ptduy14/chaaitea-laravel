@@ -62,24 +62,25 @@
                                     </div>
                                     <div class="user-detail">
                                         <div class="user-detail-name">{{Auth::user()->name}}</div>
-                                        <div class="user-detail-role">Customer</div>
-                                    </div>
+                                        <div class="user-detail-role">{{Auth::user()->role->role_name}}                                   </div>
                                 </li>
                                 <li class="line"></li>
-                                <li class="user-dropdown-item">
-                                    <a href="/account" class="user-menu-link">
-                                        <i class="fa-regular fa-user"></i>
-                                        <span>Tài khoản của tôi</span>
-                                    </a>
-                                </li>
-                                <li class="line"></li>
-                                <li class="user-dropdown-item">
-                                    <a href="/order" class="user-menu-link">
-                                        <i class="fa-solid fa-file-invoice"></i>
-                                        <span>Đơn hàng của tôi</span>
-                                    </a>
-                                </li>
-                                <li class="line"></li>
+                                @if (Auth::user()->role->role_id === 3)
+                                    <li class="user-dropdown-item">
+                                        <a href="/account" class="user-menu-link">
+                                            <i class="fa-regular fa-user"></i>
+                                            <span>Tài khoản của tôi</span>
+                                        </a>
+                                    </li>
+                                    <li class="line"></li>
+                                    <li class="user-dropdown-item">
+                                        <a href="/order" class="user-menu-link">
+                                            <i class="fa-solid fa-file-invoice"></i>
+                                            <span>Đơn hàng của tôi</span>
+                                        </a>
+                                    </li>
+                                    <li class="line"></li>
+                                @endif
                                 <li class="user-dropdown-item">
                                     <a href="/logout" class="user-menu-link">
                                         <i class="fa-solid fa-right-from-bracket"></i>
@@ -163,24 +164,26 @@
                                         </div>
                                         <div class="user-detail">
                                             <div class="user-detail-name">{{Auth::user()->name}}</div>
-                                            <div class="user-detail-role">Customer</div>
+                                            <div class="user-detail-role">{{Auth::user()->role->role_name}}</div>
                                         </div>
                                     </li>
                                     <li class="line"></li>
-                                    <li class="user-dropdown-item">
-                                        <a href="/account" class="user-menu-link">
-                                            <i class="fa-regular fa-user"></i>
-                                            <span>Tài khoản của tôi</span>
-                                        </a>
-                                    </li>
-                                    <li class="line"></li>
-                                    <li class="user-dropdown-item">
-                                        <a href="/order" class="user-menu-link">
-                                            <i class="fa-solid fa-file-invoice"></i>
-                                            <span>Đơn hàng của tôi</span>
-                                        </a>
-                                    </li>
-                                    <li class="line"></li>
+                                    @if (Auth::user()->role->role_id === 3)
+                                        <li class="user-dropdown-item">
+                                            <a href="/account" class="user-menu-link">
+                                                <i class="fa-regular fa-user"></i>
+                                                <span>Tài khoản của tôi</span>
+                                            </a>
+                                        </li>
+                                        <li class="line"></li>
+                                        <li class="user-dropdown-item">
+                                            <a href="/order" class="user-menu-link">
+                                                <i class="fa-solid fa-file-invoice"></i>
+                                                <span>Đơn hàng của tôi</span>
+                                            </a>
+                                        </li>
+                                        <li class="line"></li>
+                                    @endif
                                     <li class="user-dropdown-item">
                                         <a href="/logout" class="user-menu-link">
                                             <i class="fa-solid fa-right-from-bracket"></i>

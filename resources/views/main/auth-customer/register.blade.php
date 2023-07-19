@@ -66,7 +66,7 @@
                         <div class="col l-6 m-12 c-12">
                             <div class="form-gruop">
                                 <select class="input input-select form-select form-select-sm mb-3" name="district" id="district" aria-label=".form-select-sm">
-                                    <option value="{{old('city') ? old('city') : ''}}" selected>{{old('city') ? old('city') : 'Quận/Huyện'}}</option>
+                                    <option value="{{old('district') ? old('district') : ''}}" selected>{{old('district') ? old('district') : 'Quận/Huyện'}}</option>
                                 </select>
                                 @if ($errors->first('district'))
                                     <span class="err-msg">{{$errors->first('district')}}</span>
@@ -79,7 +79,7 @@
                         <div class="col l-6 m-12 c-12">
                             <div class="form-gruop">
                                 <select class="input input-select form-select form-select-sm" name="ward" id="ward" aria-label=".form-select-sm">
-                                    <option value="{{old('city') ? old('city') : ''}}" selected>{{old('city') ? old('city') : 'Phường/Xã'}}</option>
+                                    <option value="{{old('ward') ? old('ward') : ''}}" selected>{{old('ward') ? old('ward') : 'Phường/Xã'}}</option>
                                 </select>
                                 @if ($errors->first('ward'))
                                     <span class="err-msg">{{$errors->first('ward')}}</span>

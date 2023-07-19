@@ -58,16 +58,18 @@ class Kernel extends HttpKernel
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'auth.login' => \App\Http\Middleware\CheckLoginMiddleware::class,
-        'is.admin' => \App\Http\Middleware\IsAdminMiddleWare::class,
-        'auth.nonlogin' => \App\Http\Middleware\CheckedLoginMiddleware::class,
-        'auth-cus.login' => \App\Http\Middleware\AuthCustomerCheckLogin::class,
         'check-password' => \App\Http\Middleware\CheckPasswordMiddleware::class,
-        
+
+        'auth.guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'auth.login' => \App\Http\Middleware\CheckLoginAuthentication::class,
+
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+
     ];
 }

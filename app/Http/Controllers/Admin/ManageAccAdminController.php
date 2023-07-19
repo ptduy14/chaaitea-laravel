@@ -10,15 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class ManageAccAdminController extends Controller
 {
     public function indexAdmin() {
-        $admins = User::where('role', 1)->get();
-
+        $admins = User::role('admin')->get();
         return view('admin.account-admin.index', compact('admins'));
     }
 
     public function handleSearchAdmin($type, $content) {
         switch ($type) {
             case 'tên admin':
-                $admins = User::where('name', 'like', '%' . $content . '%')->where('role', 1)->get();
+                $admins = User::where('name', 'like', '%' . $content . '%')->where('role_id', 1)->get();
                 break;
             
             default:
@@ -45,9 +44,8 @@ class ManageAccAdminController extends Controller
             'name' => $request->input('admin_name'),
             'email' => $request->input('user_name'),
             'phone' => $request->input('admin_phone'),
-            'password'  => bcrypt($request->input('password')),
-            'role' => 1
-        ]);
+            'password'  => bcrypt($request->input('password')), 
+        ])->assignRole('admin');
 
         $admin->save();
         return redirect('/admin/admin')->with('toast_msg', 'Admin mới đã được thêm thành công');

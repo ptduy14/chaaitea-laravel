@@ -97,18 +97,18 @@
               <form id="formAuthentication" class="mb-3" action="/admin/login" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="username" class="form-label">Username</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
                     autofocus
-                    value="{{old('email')}}"
+                    value="{{old('username')}}"
                   />
-                  @if ($errors->first('email'))
-                    <span class="err-msg">{{$errors->first('email')}}</span>
+                  @if ($errors->first('username'))
+                    <span class="err-msg">{{$errors->first('username')}}</span>
                   @endif
                 </div>
                 <div class="mb-3 form-password-toggle">

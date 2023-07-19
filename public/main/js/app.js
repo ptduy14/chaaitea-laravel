@@ -154,8 +154,7 @@ const app = {
             }
         }
         
-
-        btnsAddCartItem.forEach((btnAddCartItem)=>{
+        btnsAddCartItem.forEach((btnAddCartItem) => {
             btnAddCartItem.onclick = () => {
                 app.handdleLogic.addNewCartItem(btnAddCartItem.dataset.id, btnAddCartItem.dataset.method);
             }

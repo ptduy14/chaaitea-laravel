@@ -9,7 +9,7 @@ use App\Models\User;
 class CustomerController extends Controller
 {
     public function indexCustomer() {
-        $customers = User::where('role', 0)->get();
+        $customers = User::role('customer')->get();
 
         return view('admin.customer.index', compact('customers'));
     }
@@ -17,7 +17,7 @@ class CustomerController extends Controller
     public function handleSearchCustomer($type, $content) {
         switch ($type) {
             case 'tên khách hàng':
-                $customers = User::where('name', 'like', '%' . $content . '%')->where('role', 0)->get();
+                $customers = User::where('name', 'like', '%' . $content . '%')->where('role_id', 3)->get();
                 break;
             
             default:

@@ -34,7 +34,9 @@ id="layout-navbar"
               </div>
               <div class="flex-grow-1">
                 <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
-                <small class="text-muted">Admin</small>
+                @foreach (Auth::user()->getRoleNames() as $roleName)
+                  <small class="text-muted">{{ucfirst($roleName)}}</small>
+                @endforeach
               </div>
             </div>
           </a>

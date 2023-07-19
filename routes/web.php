@@ -37,82 +37,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/admin/register', [TestController::class, 'register']);
-
-
-// chưa login sẽ dô cái này
-Route::middleware('auth.nonlogin')->group(function() {
+Route::middleware('auth.guest')->group(function () {
+    // admin
     Route::get('/admin/login', [AuthAdminController::class, 'indexLoginForm']);
     Route::post('/admin/login', [AuthAdminController::class, 'handleLogin']);
-});
 
-
-// login r dô cái này
-Route::middleware(['auth.login', 'is.admin'])->group(function() {
-
-    Route::get('/admin/logout', [AuthAdminController::class, 'handleLogout']);
-    
-    // home
-    Route::get('/admin', [PageController::class, 'index']);
-
-    // category
-    Route::resource('/admin/category', CategoryController::class);
-    Route::get('/admin/category/{id}/product-in-cate', [CategoryController::class, 'indexProductInCate']);
-
-    //product
-    Route::resource('/admin/product', ProductController::class);
-
-
-    //product-detail
-    Route::get('/admin/product-detail/{id}/create', [ProductDetailController::class, 'createProductDetail']);
-    Route::post('/admin/product-detail/{id}/store', [ProductDetailController::class, 'storeProductDetail']);
-    Route::get('/admin/product-detail/{id}/index', [ProductDetailController::class, 'indexProductDetail']);
-    Route::get('/admin/product-detail/{id}/edit', [ProductDetailController::class, 'editProductDetail']);
-    Route::post('/admin/product-detail/{id}/update', [ProductDetailController::class, 'updateProductDetail']);
-
-    //product-photos
-    Route::get('/admin/product-photos/{id}/create', [ProductPhotosController::class, 'createProductPhotos']);
-    Route::post('/admin/product-photos/{id}/store', [ProductPhotosController::class, 'storeProductPhotos']);
-    Route::get('/admin/product-photos/{id}/index', [ProductPhotosController::class, 'indexProductPhotos']);
-    Route::post('/admin/product-photos/{id}/update', [ProductPhotosController::class, 'updateProductPhotos']);
-
-    // order
-    Route::get('/admin/order', [OrderManageController::class, 'index']);
-    Route::get('/admin/order/render', [OrderManageController::class, 'renderData']);
-    Route::get('/admin/order/sort/{type}', [OrderManageController::class, 'hanldeSortOrder']);
-    Route::get('/admin/order/{id}/{status}', [OrderManageController::class, 'handleChangeStatusOrder']);
-    Route::get('/admin/order-detail/{id}', [OrderManageController::class, 'indexOrderDetail']);
-    Route::get('/admin/order-search/{type}/{content}', [OrderManageController::class, 'handleSearchOrder']);
-
-    // manager customer
-    Route::get('/admin/customer', [CustomerController::class, 'indexCustomer']);
-    Route::get('/admin/customer/search/{type}/{content}', [CustomerController::class, 'handleSearchCustomer']);
-
-    // manager admin account
-    Route::get('/admin/admin', [ManageAccAdminController::class, 'indexAdmin']);
-    Route::get('/admin/admin/search/{type}/{content}', [ManageAccAdminController::class, 'handleSearchAdmin']);
-    Route::post('/admin/admin/create', [ManageAccAdminController::class, 'indexCreateNewAdmin']);
-    Route::post('/admin/admin/store', [ManageAccAdminController::class, 'storeCreateNewAddmin']);
-    Route::post('/admin/admin/edit', [ManageAccAdminController::class, 'indexEditAdmin'])->middleware('check-password');
-    Route::post('/admin/admin/update', [ManageAccAdminController::class, 'updateAdmin']);
-    Route::post('/admin/admin/delete', [ManageAccAdminController::class, 'deleteAdmin']);
-});
-
-
-// main page
-Route::get('', [HomeController::class, 'index']);
-
-
-Route::middleware('auth.nonlogin')->group(function () {
+    // customer
     Route::get('/register', [AuthCustomerController::class, 'indexFormRegister']);
     Route::post('/register', [AuthCustomerController::class, 'handleFormRegister']);
 
-    
     Route::get('/login', [AuthCustomerController::class, 'indexFormLogin']);
     Route::post('/login', [AuthCustomerController::class, 'handleFormLogin']);
 
-    Route::get('/verify/{id}/{token}', [AuthCustomerController::class, 'handleVerifyAccount'])->name('verify.account');
     Route::get('/verify/{id}', [AuthCustomerController::class, 'indexVerifyAccount'])->name('verify.index');
+    Route::get('/verify/{id}/{token}', [AuthCustomerController::class, 'handleVerifyAccount'])->name('verify.account');
     Route::get('/re-verify/{id}', [AuthCustomerController::class, 'handleReVerifyAccount']);
 
     Route::get('/forget-password', [AuthCustomerController::class, 'indexForgetPasswordValidateForm']);
@@ -121,37 +59,93 @@ Route::middleware('auth.nonlogin')->group(function () {
     Route::post('/forget-password/handling', [AuthCustomerController::class, 'handleForgetPasswordForm']);
 });
 
-Route::middleware(['auth-cus.login'])->group(function () {
+Route::middleware('auth.login')->group(function() {
+
+    Route::middleware('role:admin|staff')->group(function() {
+        // admin page
+        Route::get('/admin', [PageController::class, 'index']);
+
+        // admin logout
+        Route::get('/admin/logout', [AuthAdminController::class, 'handleLogout']);
+        
+        // category
+        Route::resource('/admin/category', CategoryController::class);
+        Route::get('/admin/category/{id}/product-in-cate', [CategoryController::class, 'indexProductInCate']);
+
+        //product
+        Route::resource('/admin/product', ProductController::class);
+
+        //product-detail
+        Route::get('/admin/product-detail/{id}/create', [ProductDetailController::class, 'createProductDetail']);
+        Route::post('/admin/product-detail/{id}/store', [ProductDetailController::class, 'storeProductDetail']);
+        Route::get('/admin/product-detail/{id}/index', [ProductDetailController::class, 'indexProductDetail']);
+        Route::get('/admin/product-detail/{id}/edit', [ProductDetailController::class, 'editProductDetail']);
+        Route::post('/admin/product-detail/{id}/update', [ProductDetailController::class, 'updateProductDetail']);
+
+        //product-photos
+        Route::get('/admin/product-photos/{id}/create', [ProductPhotosController::class, 'createProductPhotos']);
+        Route::post('/admin/product-photos/{id}/store', [ProductPhotosController::class, 'storeProductPhotos']);
+        Route::get('/admin/product-photos/{id}/index', [ProductPhotosController::class, 'indexProductPhotos']);
+        Route::post('/admin/product-photos/{id}/update', [ProductPhotosController::class, 'updateProductPhotos']);
+
+        // order
+        Route::get('/admin/order', [OrderManageController::class, 'index']);
+        Route::get('/admin/order/render', [OrderManageController::class, 'renderData']);
+        Route::get('/admin/order/sort/{type}', [OrderManageController::class, 'hanldeSortOrder']);
+        Route::get('/admin/order/{id}/{status}', [OrderManageController::class, 'handleChangeStatusOrder']);
+        Route::get('/admin/order-detail/{id}', [OrderManageController::class, 'indexOrderDetail']);
+        Route::get('/admin/order-search/{type}/{content}', [OrderManageController::class, 'handleSearchOrder']);
+
+        // manager customer
+        Route::get('/admin/customer', [CustomerController::class, 'indexCustomer']);
+        Route::get('/admin/customer/search/{type}/{content}', [CustomerController::class, 'handleSearchCustomer']);
+
+        // manager admin account
+        Route::get('/admin/admin', [ManageAccAdminController::class, 'indexAdmin']);
+        Route::get('/admin/admin/search/{type}/{content}', [ManageAccAdminController::class, 'handleSearchAdmin']);
+        
+        Route::middleware('role:admin')->group(function() {
+            Route::post('/admin/admin/create', [ManageAccAdminController::class, 'indexCreateNewAdmin']);
+            Route::post('/admin/admin/store', [ManageAccAdminController::class, 'storeCreateNewAddmin']);
+            Route::post('/admin/admin/edit', [ManageAccAdminController::class, 'indexEditAdmin'])->middleware('check-password');
+            Route::post('/admin/admin/update', [ManageAccAdminController::class, 'updateAdmin']);
+            Route::post('/admin/admin/delete', [ManageAccAdminController::class, 'deleteAdmin']);
+        });
+    });
+
     Route::get('/logout', [AuthCustomerController::class, 'handleLogout']);
+
+    Route::middleware('role:customer')->group(function() {
+
+        Route::get('/account', [AccountController::class, 'index']);
+        Route::post('/account', [AccountController::class, 'updateAccount']);
+        Route::post('/account/change-passoword', [AccountController::class, 'ChangePasswordAccount']);
+
+
+        Route::get('/order', [OrderController::class, 'indexOrder']);
+        Route::get('/order/detail/{id}', [OrderController::class, 'indexOrderDetail'])->name('order.detail');
+
+        Route::get('/order/payment', [OrderController::class, 'indexPayment']);
+        Route::post('/order/payment', [OrderController::class, 'handlePaymentRequest']);
+        Route::get('/order/confirm/{id}', [OrderController::class, 'handleConfirmOrder']);
+        Route::get('/order/cancel/{id}', [OrderController::class, 'handleCancelOrder']);
+    });
     
-    Route::get('/account', [AccountController::class, 'index']);
-    Route::post('/account', [AccountController::class, 'updateAccount']);
-    Route::post('/account/change-passoword', [AccountController::class, 'ChangePasswordAccount']);
-
-
-    Route::get('/order', [OrderController::class, 'indexOrder']);
-    Route::get('/order/detail/{id}', [OrderController::class, 'indexOrderDetail'])->name('order.detail');
-
-    Route::get('/order/payment', [OrderController::class, 'indexPayment']);
-    Route::post('/order/payment', [OrderController::class, 'handlePaymentRequest']);
-    Route::get('/order/confirm/{id}', [OrderController::class, 'handleConfirmOrder']);
-    Route::get('/order/cancel/{id}', [OrderController::class, 'handleCancelOrder']);
 });
 
-
-
-Route::get('/product-detail/{id}', [HomeController::class, 'indexProductDetail']);
+// Home
+Route::get('', [HomeController::class, 'index']);
 
 Route::get('/cart/add-cart-item/{id}', [CartController::class, 'addNewcartItemGET']);
 Route::post('/cart/add-cart-item/{id}', [CartController::class, 'addNewcartItemPOST']);
 Route::get('/cart/del-cart-item/{id}', [CartController::class, 'delCartItem']);
 Route::get('/cart/edit-cart-item/{id}/{quantity}', [CartController::class, 'editCartItem']);
 Route::get('/cart', [CartController::class, 'indexCart']);
-
 Route::get('/cart-detail', [CartDetailController::class, 'index']);
 
 // All product
 Route::get('/products', [ProductsController::class, 'index']);
+Route::get('/product-detail/{id}', [HomeController::class, 'indexProductDetail']);
 Route::get('/products/sort/{type}', [ProductsController::class, 'sortProducts']);
 Route::get('/products/search/{content}', [ProductsController::class, 'searchProducts']);
 Route::get('/products/filter/{price_start}/{price_end}', [ProductsController::class, 'filterProductsPrice']);

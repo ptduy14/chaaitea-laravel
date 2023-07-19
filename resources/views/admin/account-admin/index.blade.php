@@ -60,7 +60,7 @@
             <th>Số điện thoại</th>
             <th>Chức danh</th>
             <th>Tình trạng tài khoản</th>
-            <th>Ngày thêm</th>
+            <th>Ngày tạo</th>
             <th>Tùy chọn</th>
           </tr>
         </thead>

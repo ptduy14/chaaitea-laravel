@@ -15,11 +15,11 @@ class AuthAdminController extends Controller
     public function handleLogin(Request $request) {
 
         $validated = $request->validate([
-            'email' => 'required',
+            'username' => 'required | not_regex:/@gmail\.com$/',
             'password' => 'required'
         ]);
 
-        $email = $request->input('email');
+        $email = $request->input('username');
         $password = $request->input('password');
         $remember = $request->input('remember-me') ? true : false;
 
@@ -47,7 +47,7 @@ class AuthAdminController extends Controller
         $toast_msg = 'you are logged out, if you want to access please login again';
         $toast_modify = 'success';
 
-        return redirect('/admin')->with(compact('toast_msg', 'toast_modify'));
+        return redirect('/admin/login')->with(compact('toast_msg', 'toast_modify'));
     }
 
     

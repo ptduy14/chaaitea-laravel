@@ -17,12 +17,9 @@ class CheckPasswordMiddleware
      */
     public function handle(Request $request, Closure $next)
     {   
-
-
-
         if (Auth::attempt(['email' => Auth::user()->email, 'password' => $request->input('password')])) {
             return $next($request);
         }
-        return response()->view('error');
+        return response()->view('error-page');
     }
 }

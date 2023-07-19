@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthCustomerCheckLogin
+class CheckLoginAuthentication
 {
     /**
      * Handle an incoming request.
@@ -20,6 +20,7 @@ class AuthCustomerCheckLogin
         if (Auth::check()) {
             return $next($request);
         }
+        
         return redirect('/login');
     }
 }

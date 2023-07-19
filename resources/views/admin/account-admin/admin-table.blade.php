@@ -5,11 +5,9 @@
                 <td>{{$admins->email}}</td>
                 <td>{{$admins->phone}}</td>
                 <td>
-                    @if ($admins->role == 1)
-                        <strong class="text-status-1">Quản trị </strong>
-                    @else
-                        <strong class="text-status-1">chưa kích hoạt </strong>
-                    @endif
+                    @foreach ($admins->getRoleNames() as $roleName)
+                        <strong class="text-status-1">{{ucfirst($roleName)}}</strong>
+                    @endforeach
                 </td>
                 <td>
                     @if ($admins->verify == 1)
