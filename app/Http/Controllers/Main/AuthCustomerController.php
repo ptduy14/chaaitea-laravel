@@ -36,7 +36,7 @@ class AuthCustomerController extends Controller
             'gender' => $request->input('gender'),
             'password' => bcrypt($request->input('password')),
             'verify_token' => $this->createVerifyToken()
-        ]);
+        ])->assignRole('customer');
 
         $data = 'Bạn đã đăng ký một tài khoản ChaaTea Shop, trước khi có thể sử dụng tài khoản của mình, bạn cần xác minh rằng đây là địa chỉ email của bạn bằng cách nhấp vào nút bên dưới:';
 

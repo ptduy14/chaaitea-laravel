@@ -168,6 +168,8 @@ function searchAdmin(searchType, searchContent) {
 
     xhttp.open('GET', '/admin/admin/search/'+searchType+'/'+searchContent, true);
     xhttp.send();
+
+    console.log(searchContent, searchType);
 }
 
 function sortOrder(sortType) {

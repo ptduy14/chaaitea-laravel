@@ -17,7 +17,7 @@ class CustomerController extends Controller
     public function handleSearchCustomer($type, $content) {
         switch ($type) {
             case 'tên khách hàng':
-                $customers = User::where('name', 'like', '%' . $content . '%')->where('role_id', 3)->get();
+                $customers = User::role('customer')->where('name', 'like', '%' . $content . '%')->get();
                 break;
             
             default:

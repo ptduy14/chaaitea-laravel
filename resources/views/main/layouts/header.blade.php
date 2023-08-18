@@ -62,10 +62,14 @@
                                     </div>
                                     <div class="user-detail">
                                         <div class="user-detail-name">{{Auth::user()->name}}</div>
-                                        <div class="user-detail-role">{{Auth::user()->role->role_name}}                                   </div>
+                                        <div class="user-detail-role">
+                                            @foreach (Auth::user()->getRoleNames() as $roleName)
+                                                <small class="text-muted">{{ucfirst($roleName)}}</small>
+                                            @endforeach
+                                        </div>
                                 </li>
                                 <li class="line"></li>
-                                @if (Auth::user()->role->role_id === 3)
+                                @if (in_array('customer', Auth::user()->getRoleNames()->toArray()))
                                     <li class="user-dropdown-item">
                                         <a href="/account" class="user-menu-link">
                                             <i class="fa-regular fa-user"></i>
@@ -164,11 +168,15 @@
                                         </div>
                                         <div class="user-detail">
                                             <div class="user-detail-name">{{Auth::user()->name}}</div>
-                                            <div class="user-detail-role">{{Auth::user()->role->role_name}}</div>
+                                            <div class="user-detail-role">
+                                                @foreach (Auth::user()->getRoleNames() as $roleName)
+                                                    <small class="text-muted">{{ucfirst($roleName)}}</small>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </li>
                                     <li class="line"></li>
-                                    @if (Auth::user()->role->role_id === 3)
+                                    @if (in_array('customer', Auth::user()->getRoleNames()->toArray()))
                                         <li class="user-dropdown-item">
                                             <a href="/account" class="user-menu-link">
                                                 <i class="fa-regular fa-user"></i>

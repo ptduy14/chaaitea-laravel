@@ -40,7 +40,7 @@ class VerifyEmail extends Mailable
     {
         return new Envelope(
             subject: 'ChaaiiTea Shop - Verify Account',
-            from: new Address('ptduy2001103@student.ctuet.edu.vn', 'ChaaiTea Shop'),
+            from: new Address('banhmibosua782@gmail.com', 'ChaaiTea Shop'),
             
         );
     }

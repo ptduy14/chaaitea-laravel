@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\TestController;
 use App\Http\Controllers\Admin\OrderManageController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\ManageAccAdminController;
+use App\Http\Controllers\Admin\StaffController;
 
 //main-page
 use App\Http\Controllers\Main\HomeController;
@@ -99,18 +100,32 @@ Route::middleware('auth.login')->group(function() {
         // manager customer
         Route::get('/admin/customer', [CustomerController::class, 'indexCustomer']);
         Route::get('/admin/customer/search/{type}/{content}', [CustomerController::class, 'handleSearchCustomer']);
+        
+        Route::get('/admin/staff', [StaffController::class, 'indexStaff']);
+
+        });
 
         // manager admin account
-        Route::get('/admin/admin', [ManageAccAdminController::class, 'indexAdmin']);
-        Route::get('/admin/admin/search/{type}/{content}', [ManageAccAdminController::class, 'handleSearchAdmin']);
-        
         Route::middleware('role:admin')->group(function() {
-            Route::post('/admin/admin/create', [ManageAccAdminController::class, 'indexCreateNewAdmin']);
+            // xử lí khi có người truy cập bằng phương thức GET mà không cung cấp mật khẩu xác thực
+            Route::get('/admin/admin/create', function () {
+                return view('error-page');
+            });
+            Route::get('/admin/admin/edit', function () {
+                return view('error-page');
+            });
+            Route::get('/admin/admin/delete', function () {
+                return view('error-page');
+            });
+
+            Route::get('/admin/admin', [ManageAccAdminController::class, 'indexAdmin']);
+            Route::get('/admin/admin/search/{type}/{content}', [ManageAccAdminController::class, 'handleSearchAdmin']);
+
+            Route::post('/admin/admin/create', [ManageAccAdminController::class, 'indexCreateNewAdmin'])->middleware('check-password');
             Route::post('/admin/admin/store', [ManageAccAdminController::class, 'storeCreateNewAddmin']);
             Route::post('/admin/admin/edit', [ManageAccAdminController::class, 'indexEditAdmin'])->middleware('check-password');
             Route::post('/admin/admin/update', [ManageAccAdminController::class, 'updateAdmin']);
-            Route::post('/admin/admin/delete', [ManageAccAdminController::class, 'deleteAdmin']);
-        });
+            Route::post('/admin/admin/delete', [ManageAccAdminController::class, 'deleteAdmin'])->middleware('check-password');
     });
 
     Route::get('/logout', [AuthCustomerController::class, 'handleLogout']);

@@ -20,6 +20,10 @@ class CheckPasswordMiddleware
         if (Auth::attempt(['email' => Auth::user()->email, 'password' => $request->input('password')])) {
             return $next($request);
         }
-        return response()->view('error-page');
+        
+        $toast_msg = 'Có lỗi xảy ra vui lòng thử lại sau';
+        $toast_modify = 'danger';
+
+        return redirect()->back()->with(compact('toast_msg', 'toast_modify'));
     }
 }

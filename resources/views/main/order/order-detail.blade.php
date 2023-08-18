@@ -61,7 +61,7 @@
                 </tr>
                 <tr>
                     <th>Tổng tiền: </th>
-                    <td class="product-subtotal">₫{{$order->total_money}}</td>
+                    <td class="product-subtotal">₫{{number_format($order->total_money)}}</td>
                 </tr>
             </tbody>
         </table>

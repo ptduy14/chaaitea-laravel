@@ -57,11 +57,18 @@
                   <div data-i18n="Without menu">Khách hàng</div>
                 </a>
               </li>
+              @if (in_array('admin', Auth::user()->getRoleNames()->toArray()))
+                <li class="menu-item">
+                  <a href="/admin/admin" class="menu-link">
+                    <div data-i18n="Without navbar">Admin</div>
+                  </a>
+                </li>     
+              @endif
               <li class="menu-item">
-                <a href="/admin/admin" class="menu-link">
-                  <div data-i18n="Without navbar">Admin</div>
+                <a href="/admin/staff" class="menu-link">
+                  <div data-i18n="Without navbar">Nhân viên</div>
                 </a>
-              </li>
+              </li>  
             </ul>
         </li>
         </ul>

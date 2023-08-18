@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
-class CreateCustomerSeeder extends Seeder
+class CreateStaffSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,14 +15,13 @@ class CreateCustomerSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
-            'name' => 'Phan Tan Duy',
-            'email' => 'customer@gmail.com',
+        User::create([
+            'name' => 'Nguyễn Văn A',
+            'email' => 'staff',
             'phone' => null,
-            'address' => 'CanTho',
+            'address' => null,
             'gender' => 1,
             'password' => bcrypt('123'),
-            'verify' => 1
-        ])->assignRole('customer');
+        ])->assignRole('staff');
     }
 }

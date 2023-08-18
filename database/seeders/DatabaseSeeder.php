@@ -8,6 +8,7 @@ use Database\Seeders\PermissionSeeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\CreateAdminSeeder;
 use Database\Seeders\CreateCustomerSeeder;
+use Database\Seeders\CreateStaffSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         
         $this->call([
-            CreateCustomerSeeder::class
+            CreateStaffSeeder::class
         ]);
         
     }

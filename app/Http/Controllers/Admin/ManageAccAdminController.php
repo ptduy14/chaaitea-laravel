@@ -11,20 +11,21 @@ class ManageAccAdminController extends Controller
 {
     public function indexAdmin() {
         $admins = User::role('admin')->get();
+
         return view('admin.account-admin.index', compact('admins'));
     }
 
     public function handleSearchAdmin($type, $content) {
         switch ($type) {
             case 'tên admin':
-                $admins = User::where('name', 'like', '%' . $content . '%')->where('role_id', 1)->get();
+                $admins = User::role('admin')->where('name', 'like', '%' . $content . '%')->get();
                 break;
             
             default:
                 # code...
                 break;
         }
-    
+        
         return view('admin.account-admin.admin-table', compact('admins'));
     }
 
