@@ -69,8 +69,8 @@
         </tbody>
       </table>
       <div class="card-header">
-            <button data-action="/admin/admin/create" class="btn btn-primary btn-create-admin" data-bs-toggle="modal" data-bs-target="#exampleModal">Thêm Admin</button>
-        </div>
+          <a href="/admin/admin/create" class="btn btn-primary">Thêm Admin</a>
+      </div>
     </div>
   </div>
   <!--/ Basic Bootstrap Table -->

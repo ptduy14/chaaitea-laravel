@@ -98,14 +98,6 @@ if (btnSubmitSearch) {
     }
 }
 
-
-if (document.querySelector('.btn-create-admin')) {
-    document.querySelector('.btn-create-admin').onclick = () => {
-        changeActionSubmitForm(document.querySelector('.btn-create-admin').dataset.action);
-        handleCheckInputPassword();
-    }
-}
-
 if (btnsEditAdmin) {
     btnsEditAdmin.forEach((item, index) => {
         item.onclick = () => {

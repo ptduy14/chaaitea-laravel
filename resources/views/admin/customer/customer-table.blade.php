@@ -9,10 +9,8 @@
                     @if ($customer->verify == 1)
                         <strong class="text-status-1">đã kích hoạt </strong>
                     @else
-                        <strong class="text-status-1">chưa kích hoạt </strong>
+                        <strong class="text-status-0">chưa kích hoạt </strong>
                     @endif
                 </td>
-                
-               
             </tr>
           @endforeach

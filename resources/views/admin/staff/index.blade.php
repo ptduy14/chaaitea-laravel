@@ -41,7 +41,7 @@
     <!-- Basic Bootstrap Table -->
 <div class="card">
     <div class="card-header">
-        <h5>Tài khoản admin</h5>
+        <h5>Tài khoản nhân viên</h5>
         <div class="form-search d-flex">
             <select id="smallSelect" class="form-select form-select-sm search-type">
               <option value="tên admin">Tên tài khoản</option>
@@ -68,9 +68,11 @@
             @include('admin.staff.staff-table')
         </tbody>
       </table>
-      <div class="card-header">
-            <button data-action="/admin/staff/create" class="btn btn-primary btn-create-admin" data-bs-toggle="modal" data-bs-target="#exampleModal">Thêm Nhân Viên</button>
+      @if (in_array('admin', Auth::user()->getRoleNames()->toArray()))
+        <div class="card-header">
+          <a href="/admin/staff/create" class="btn btn-primary">Thêm nhân viên</a>
         </div>
+      @endif 
     </div>
   </div>
   <!--/ Basic Bootstrap Table -->

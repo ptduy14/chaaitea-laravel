@@ -16,18 +16,18 @@
     <div class="col-xxl">
         <div class="card mb-4">
           <div class="card-header d-flex align-items-center justify-content-between">
-            <h5 class="mb-0">Thêm Admin</h5>
-            <a  class="btn btn-primary" href="/admin/admin">Back</a>
+            <h5 class="mb-0">Thêm nhân viên với</h5>
+            <a  class="btn btn-primary" href="/admin/staff">Back</a>
           </div>
           <div class="card-body">
-            <form action="/admin/admin/store" method="post">
+            <form action="/admin/staff/store" method="post">
               @csrf
               <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">Tên Admin</label>
+                <label class="col-sm-2 col-form-label" for="basic-default-name">Tên nhân viên</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="basic-default-name" name="admin_name" />
-                  @if ($errors->first('admin_name'))
-                    <span class="err-msg">{{$errors->first('admin_name')}}</span>
+                  <input type="text" class="form-control" id="basic-default-name" name="staff_name" />
+                  @if ($errors->first('staff_name'))
+                    <span class="err-msg">{{$errors->first('staff_name')}}</span>
                   @endif
                 </div>
               </div>
@@ -43,9 +43,9 @@
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-name">Số điện thoại</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="basic-default-name" name="admin_phone" />
-                  @if ($errors->first('admin_phone'))
-                    <span class="err-msg">{{$errors->first('admin_phone')}}</span>
+                  <input type="text" class="form-control" id="basic-default-name" name="staff_phone" />
+                  @if ($errors->first('staff_phone'))
+                    <span class="err-msg">{{$errors->first('staff_phone')}}</span>
                   @endif
                 </div>
               </div>

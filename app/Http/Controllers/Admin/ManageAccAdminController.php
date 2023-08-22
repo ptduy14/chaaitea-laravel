@@ -34,6 +34,14 @@ class ManageAccAdminController extends Controller
     }
 
     public function storeCreateNewAddmin(Request $request) {
+
+        if ($request->input('password_admin') == '' || !Auth::attempt(['email' => Auth::user()->email, 'password' => $request->input('password')])) {
+            $toast_msg = 'Mật khẩu admin không đúng';
+            $toast_modify = 'danger';
+    
+            return redirect()->back()->with(compact('toast_msg', 'toast_modify'));
+        }
+
         $validated = $request->validate([
             'admin_name' => 'required',
             'user_name' => 'required | unique:table_user,email',
